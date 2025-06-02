@@ -36,7 +36,7 @@ class TripCard extends StatelessWidget {
           Stack(
             children: [
               AspectRatio(
-                aspectRatio: 16 / 12,
+                aspectRatio: 16 / 13,
                 child: Image.network(
                   trip.coverImage ?? "",
                   fit: BoxFit.cover,
@@ -45,6 +45,26 @@ class TripCard extends StatelessWidget {
                         color: Colors.grey[900],
                         child: const Icon(Icons.error, color: Colors.white54),
                       ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                left: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Theme.of(context).cardColor,
+                        Theme.of(context).cardColor.withValues(alpha: 0.9),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
                 ),
               ),
               Positioned(
@@ -92,7 +112,7 @@ class TripCard extends StatelessWidget {
 
           /// trip title and dates and participants
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
